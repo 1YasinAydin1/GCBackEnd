@@ -14,10 +14,6 @@ namespace GCBackEnd.Persistence
 {
 	public static class ServiceRegistration
 	{
-		/// <summary>
-		/// TEST
-		/// </summary>
-		/// <param name="services"></param>
 		public static void AddPersistenceServices(this IServiceCollection services)
 		{
 			
