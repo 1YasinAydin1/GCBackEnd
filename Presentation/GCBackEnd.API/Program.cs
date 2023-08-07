@@ -1,5 +1,6 @@
 using FluentValidation.AspNetCore;
 using GCBackEnd.Application.Validators.Product;
+using GCBackEnd.Infrastructure;
 using GCBackEnd.Infrastructure.Filters;
 using GCBackEnd.Persistence;
 
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddPersistenceServices();
+builder.Services.AddInfrastructureServices();
 builder.Services.AddCors(options =>
 options.AddDefaultPolicy(policy =>
 policy.WithOrigins(
@@ -14,7 +16,7 @@ policy.WithOrigins(
 	"http://localhost:4200").AllowAnyHeader().AllowAnyMethod()));
 
 builder.Services.AddControllers(options => options.Filters.Add<ValidationFilter>())
-	.AddFluentValidation(configuration => configuration.RegisterValidatorsFromAssemblyContaining<ProductCreateValidator>())
+    .AddFluentValidation(configuration => configuration.RegisterValidatorsFromAssemblyContaining<ProductCreateValidator>())
 	.ConfigureApiBehaviorOptions(options=>options.SuppressModelStateInvalidFilter = true);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

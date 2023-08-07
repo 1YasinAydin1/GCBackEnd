@@ -89,8 +89,8 @@ namespace GCBackEnd.Persistence.Migrations
                     b.Property<int>("OnHand")
                         .HasColumnType("integer");
 
-                    b.Property<long>("Price")
-                        .HasColumnType("bigint");
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("timestamp with time zone");

@@ -31,7 +31,7 @@ namespace GCBackEnd.Persistence.Repositories
 		public async Task<T> GetByIdAsync(string id, bool isTracking = true)
 		{
 			if (!isTracking)
-				return Table.AsQueryable().AsNoTracking().First(i=>i.Id.Equals(Guid.Parse(id)));
+				return await Table.AsQueryable().AsNoTracking().FirstAsync(i=>i.Id.Equals(Guid.Parse(id)));
 			return Table.First(i => i.Id.Equals(Guid.Parse(id)));
 		}
 		//=> await Table.FindAsync(Guid.Parse(id));
